@@ -13,6 +13,8 @@
 *.dylib
 *.dll
 
+*SFML*
+
 # Fortran module files
 *.mod
 

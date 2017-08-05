@@ -30,19 +30,8 @@ void Enemy::setTexture(std::string textureFile){
   mTexture.setSmooth(true);
 }
 
-sf::Texture Enemy::getTexture(){
-  return mTexture;
-}
 
 void Enemy::setSprite(){
   mSprite.setTexture(mTexture);
   mSprite.setPosition(posX, posY);
-}
-
-sf::Sprite Enemy::getSprite(){
-  return mSprite;
-}
-
-void Enemy::modSprite(sf::Sprite mod){
-  mSprite = mod;
 }

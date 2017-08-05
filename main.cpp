@@ -2,9 +2,11 @@
 
 #include "Headers/Entitys/Enemy.hpp"
 #include "Headers/Tileset/Tileset.hpp"
+#include "Headers/Entitys/User.hpp"
 
 int main() {
   sf::RenderWindow window(sf::VideoMode(800, 600), "Test");
+  window.setFramerateLimit(60);
 
   const int level[] = {
     0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -36,6 +38,11 @@ int main() {
     return -1;
   }
 
+  User user;
+
+  user.setTexture("assets/test.png");
+  user.setSprite();
+
   while(window.isOpen()){
     sf::Event event;
     while(window.pollEvent(event)){
@@ -44,8 +51,13 @@ int main() {
       }
     }
 
+    user.uMove();
+    user.update();
+
     window.clear(sf::Color::Black);
+
     window.draw(map);
+    window.draw(user.mSprite);
     window.display();
 
   }

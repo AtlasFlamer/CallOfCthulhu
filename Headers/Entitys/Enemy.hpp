@@ -13,12 +13,10 @@ public:
   void render();
 
   void setTexture(std::string textureFile);
-  sf::Texture getTexture();
-
-  void modSprite(sf::Sprite mod);
-
   void setSprite();
-  sf::Sprite getSprite();
+
+  sf::Texture mTexture;
+  sf::Sprite mSprite;
 
 private:
 
@@ -28,9 +26,6 @@ private:
   int health;
   int damage;
   int vel;
-
-  sf::Texture mTexture;
-  sf::Sprite mSprite;
 
 };
 

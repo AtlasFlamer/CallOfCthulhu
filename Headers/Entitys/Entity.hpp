@@ -17,10 +17,8 @@ public:
   virtual void render()             = 0;
 
   virtual void setTexture(std::string textureFile)         = 0;
-  virtual sf::Texture getTexture()  = 0;
 
   virtual void setSprite()         = 0;
-  virtual sf::Sprite getSprite()    = 0;
 
 private:
 

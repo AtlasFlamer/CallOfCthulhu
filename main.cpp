@@ -3,10 +3,13 @@
 #include "Headers/Entitys/Enemy.hpp"
 #include "Headers/Tileset/Tileset.hpp"
 #include "Headers/Entitys/User.hpp"
+#include "Headers/System/Collision.hpp"
 
 int main() {
   sf::RenderWindow window(sf::VideoMode(800, 600), "Test");
   window.setFramerateLimit(60);
+
+  Collision cColision;
 
   const int level[] = {
     0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -21,7 +24,7 @@ int main() {
     0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
     0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
     0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-    0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+    0,0,0,0,0,0,0,0,0,0,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,
     0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
     0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
     0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -52,6 +55,14 @@ int main() {
     }
 
     user.uMove();
+
+    bool shouldMove = cColision.comprobarColision(user.posX, user.posY, level);
+
+    if(shouldMove){
+      user.posX--;
+      std::cout << "Changed position" << std::endl;
+    }
+
     user.update();
 
     window.clear(sf::Color::Black);

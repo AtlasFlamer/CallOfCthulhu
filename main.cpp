@@ -9,10 +9,6 @@
 
 User user;
 
-void Move(){
-  user.uMove();
-}
-
 int main() {
   sf::RenderWindow window(sf::VideoMode(800, 600), "Test");
   window.setFramerateLimit(60);
@@ -52,8 +48,6 @@ int main() {
   user.setTexture("assets/right.png");
   user.setSprite();
 
-  sf::Thread thread(&Move);
-
   while(window.isOpen()){
     sf::Event event;
     while(window.pollEvent(event)){
@@ -62,7 +56,16 @@ int main() {
       }
     }
 
-    thread.launch();
+    user.uMove();
+
+    bool shouldMove = cColision.comprobarColision(user.posX, user.posY, level);
+
+    if(shouldMove){
+
+      user.posX--;
+      std::cout << "Changed position" << std::endl;
+    }
+
     user.update();
 
     window.clear(sf::Color::Black);

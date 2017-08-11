@@ -19,8 +19,11 @@ public:
   float posX;
   float posY;
 
+  bool hasGun;
+
   sf::Texture mTexture;
   sf::Texture mTexture2;
+
   sf::Sprite mSprite;
 };
 

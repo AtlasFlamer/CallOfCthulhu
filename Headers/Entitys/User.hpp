@@ -20,6 +20,7 @@ public:
   float posY;
 
   sf::Texture mTexture;
+  sf::Texture mTexture2;
   sf::Sprite mSprite;
 };
 

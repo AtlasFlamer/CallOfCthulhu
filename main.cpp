@@ -5,6 +5,14 @@
 #include "Headers/Entitys/User.hpp"
 #include "Headers/System/Collision.hpp"
 
+#include <SFML/System.hpp>
+
+User user;
+
+void Move(){
+  user.uMove();
+}
+
 int main() {
   sf::RenderWindow window(sf::VideoMode(800, 600), "Test");
   window.setFramerateLimit(60);
@@ -41,10 +49,10 @@ int main() {
     return -1;
   }
 
-  User user;
-
-  user.setTexture("assets/test.png");
+  user.setTexture("assets/right.png");
   user.setSprite();
+
+  sf::Thread thread(&Move);
 
   while(window.isOpen()){
     sf::Event event;
@@ -54,15 +62,7 @@ int main() {
       }
     }
 
-    user.uMove();
-
-    bool shouldMove = cColision.comprobarColision(user.posX, user.posY, level);
-
-    if(shouldMove){
-      user.posX--;
-      std::cout << "Changed position" << std::endl;
-    }
-
+    thread.launch();
     user.update();
 
     window.clear(sf::Color::Black);

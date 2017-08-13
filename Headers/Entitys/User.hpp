@@ -19,7 +19,12 @@ public:
   float posX;
   float posY;
 
-  bool hasGun;
+  int health;
+
+  bool isMovingLeft;
+  bool isMovingRight;
+  bool isMovingUp;
+  bool isMovingDown;
 
   sf::Texture mTexture;
   sf::Texture mTexture2;

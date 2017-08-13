@@ -2,7 +2,7 @@
 
 
 User::User(){
-
+  health = 100;
 }
 
 User::~User(){
@@ -14,6 +14,9 @@ void User::render(){
 }
 
 void User::update(){
+  if(health <= 0){
+    exit(1);
+  }
   mSprite.setPosition(posX, posY);
 }
 
@@ -31,7 +34,7 @@ void User::setTexture(std::string textureFile){
 
 void User::setSprite(){
   mSprite.setTexture(mTexture);
-  mSprite.setPosition(posX, posY);
+  mSprite.setPosition(500, 500);
 }
 
 void User::uMove(){
@@ -39,19 +42,23 @@ void User::uMove(){
   if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
     posX--;
     mSprite.setTexture(mTexture2);
+    isMovingLeft = true;
   }
 
   if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
     posX++;
     mSprite.setTexture(mTexture);
+    isMovingRight = true;
   }
 
   if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){
     posY--;
+    isMovingUp = true;
   }
 
   if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down)){
     posY++;
+    isMovingDown = true;
   }
 
   if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && sf::Keyboard::isKeyPressed(sf::Keyboard::LShift)){

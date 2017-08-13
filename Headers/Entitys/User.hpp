@@ -9,7 +9,7 @@ public:
   User();
   ~User();
 
-  void update();
+  bool update();
   void render();
   void setTexture(std::string textureFile);
   void setSprite();

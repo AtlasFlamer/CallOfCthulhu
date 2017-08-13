@@ -13,11 +13,13 @@ void User::render(){
 
 }
 
-void User::update(){
+bool User::update(){
   if(health == 0){
-    exit(1);
+    return true;
   }
   mSprite.setPosition(posX, posY);
+  
+  return false;
 }
 
 void User::setTexture(std::string textureFile){

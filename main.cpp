@@ -8,8 +8,14 @@
 #include <SFML/System.hpp>
 
 User user;
+Enemy tEnemy(100, 100, 200, 128, 128);
+
 sf::Font beba;
+
 sf::Text GameOver;
+sf::Text dialogs;
+
+bool canDrawDialog = false;
 
 int main() {
   sf::RenderWindow window(sf::VideoMode(800, 600), "Test");
@@ -24,6 +30,11 @@ int main() {
   GameOver.setCharacterSize(24);
   GameOver.setFillColor(sf::Color::White);
   GameOver.setStyle(sf::Text::Bold);
+
+  dialogs.setFont(beba);
+  dialogs.setCharacterSize(12);
+  dialogs.setFillColor(sf::Color::White);
+  dialogs.setStyle(sf::Text::Bold);
 
   const int level[] = {
     1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
@@ -61,6 +72,9 @@ int main() {
 
   user.setTexture("assets/right.png");
   user.setSprite();
+
+  tEnemy.setTexture("assets/right.png");
+  tEnemy.setSprite();
 
   while(window.isOpen()){
     sf::Event event;
@@ -120,10 +134,28 @@ int main() {
       }
     }
 
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::C) && canDrawDialog){
+      canDrawDialog = false;
+    }
+
+    if(((user.posX <= tEnemy.posX - 32 && user.posX >= tEnemy.posX) || user.posX == tEnemy.posX + 32) && (user.posY == tEnemy.posY)){
+      if(sf::Keyboard::isKeyPressed(sf::Keyboard::C)){
+        dialogs.setPosition(tEnemy.posX + 32, tEnemy.posY - 32);
+        dialogs.setString("Hola te matare");
+        canDrawDialog = true;
+      }
+    }
+
     window.clear(sf::Color::Black);
 
     window.draw(map);
     window.draw(user.mSprite);
+    window.draw(tEnemy.mSprite);
+
+    if(canDrawDialog){
+      window.draw(dialogs);
+    }
+
     window.display();
 
   }

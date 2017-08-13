@@ -18,8 +18,6 @@ public:
   sf::Texture mTexture;
   sf::Sprite mSprite;
 
-private:
-
   float posX;
   float posY;
 

@@ -23,7 +23,7 @@ void Enemy::render(){
 
 void Enemy::setTexture(std::string textureFile){
 
-  if(!mTexture.loadFromFile(textureFile, sf::IntRect(32,32,32,32))){
+  if(!mTexture.loadFromFile(textureFile, sf::IntRect(0,0,32,32))){
     std::cout << "Error al cargar: " << textureFile << std::endl;
   }
 

@@ -1,7 +1,10 @@
 #ifndef USER_HPP
 #define USER_HPP
 
+#include <SFML/Graphics.hpp>
 #include "Entity.hpp"
+#include "../Tileset/Tileset.hpp"
+#include <SFML/System.hpp>
 
 class User : public Entity{
 

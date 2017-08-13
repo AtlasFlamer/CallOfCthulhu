@@ -105,6 +105,7 @@ int main() {
       death = true;
       while(death){
         window.clear(sf::Color::Black);
+        GameOver.setPosition(350, 250);
         window.draw(GameOver);
         window.display();
 

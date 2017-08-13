@@ -3,6 +3,8 @@
 
 User::User(){
   health = 100;
+  posX = 2 * 32;
+  posY = 2 * 32; 
 }
 
 User::~User(){
@@ -18,7 +20,7 @@ bool User::update(){
     return true;
   }
   mSprite.setPosition(posX, posY);
-  
+
   return false;
 }
 
@@ -36,7 +38,7 @@ void User::setTexture(std::string textureFile){
 
 void User::setSprite(){
   mSprite.setTexture(mTexture);
-  mSprite.setPosition(500, 500);
+  mSprite.setPosition(2 * 32, 2 * 32);
 }
 
 void User::uMove(){
@@ -85,14 +87,14 @@ void User::uMove(){
         posX += 2;
         posY -= 2;
         update();
-        sf::sleep(sf::milliseconds(10));
+
       }
 
       for(int i=0; i<53; i++){
         posX += 2;
         posY += 2;
         update();
-        sf::sleep(sf::milliseconds(10));
+
       }
   }
 }

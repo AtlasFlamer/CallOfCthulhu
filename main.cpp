@@ -60,6 +60,12 @@ int main() {
 
     bool shouldMove = cColision.comprobarColision(user.posX, user.posY, level);
 
+    if(cColision.heal == 0){
+      user.health = cColision.heal;
+    }
+
+    std::cout << "Heal: " << cColision.heal << std::endl;
+
     if(shouldMove){
       if(user.isMovingDown){
         user.posY -= 2;

@@ -6,6 +6,7 @@ public:
   Collision();
   ~Collision();
 
+  int heal;
   bool comprobarColision(int posX, int posY, const int aLevel[]);
 };
 

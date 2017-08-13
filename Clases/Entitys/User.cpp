@@ -14,7 +14,7 @@ void User::render(){
 }
 
 void User::update(){
-  if(health <= 0){
+  if(health == 0){
     exit(1);
   }
   mSprite.setPosition(posX, posY);
